@@ -9,9 +9,6 @@ on:
 jobs:
   #build_and_test_from_master:
   build_and_test_from_pr:
-
-jobs:
-  build_and_test:
     runs-on: ubuntu-latest
 
     steps:
