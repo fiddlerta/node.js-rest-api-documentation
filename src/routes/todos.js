@@ -88,7 +88,7 @@ router.put('/:id', (req,res) => {
 
 router.delete('/:id', (req,res) => {
 
-    //find todo.
+    //find todo .
     let todo = req.app.db.get("todos").find({
         id:req.params.id
     }).value();
