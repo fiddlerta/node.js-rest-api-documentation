@@ -34,11 +34,10 @@ jobs:
           path: api-tests
       - name: Check 'api-tests' folder content
         run: |
-          echo "Folder content: $GITHUB_ACTION_PATH/api-tests"
+          ls -a $GITHUB_ACTION_PATH/api-tests"
       - name: Run gatling API tests
         uses: liatrio/run-gatling@v1.2.0
         with:
-          pomPath: my_test_suite/path
-          simulationClass: simulationsPkg.MySimulationClass
+          pomPath: $GITHUB_ACTION_PATH/api-tests
       - name: Stop the app
         run: npm run stop
