@@ -35,9 +35,11 @@ jobs:
       - name: Check 'api-tests' folder content
         run: |
           ls -a $GITHUB_ACTION_PATH\api-tests
+          echo "pomPath=$GITHUB_ACTION_PATH\api-tests" >> $GITHUB_OUTPUT
+        id: extract_path_to_pom
       - name: Run gatling API tests
         uses: liatrio/run-gatling@v1.2.0
         with:
-          pomPath: $GITHUB_ACTION_PATH\api-tests
+          pomPath: ${{steps.extract_path_to_pom.outputs.pomPath}}
       - name: Stop the app
         run: npm run stop
