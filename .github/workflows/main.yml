@@ -13,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout app repo from PR branch
         uses: actions/checkout@v4
-      - name: Branch name
+      - name: Print name of pulled branch
         run: echo running on branch ${GITHUB_HEAD_REF}
       - name: Install Node.js
         uses: actions/setup-node@v3
@@ -27,6 +27,11 @@ jobs:
         run: npm install forever -g
       - name: Build the project
         run: npm run start-silently
+      - name: Checkout remote branch with API tests
+        uses: actions/checkout@v4
+        with: 
+          repository: fiddlerta/gatling-maven-tests-java
+          path: api-tests
       - name: Run tests
         run: echo "tests passed"
       - name: Stop the app
