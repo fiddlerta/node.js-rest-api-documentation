@@ -34,7 +34,7 @@ jobs:
           path: api-tests
       - name: Check 'api-tests' folder content
         run: |
-          ls -a $GITHUB_ACTION_PATH/api-tests"
+          ls -a $GITHUB_ACTION_PATH/api-tests
       - name: Run gatling API tests
         uses: liatrio/run-gatling@v1.2.0
         with:
