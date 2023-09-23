@@ -41,5 +41,6 @@ jobs:
         uses: liatrio/run-gatling@v1.2.0
         with:
           pomPath: ${{steps.extract_path_to_pom.outputs.pomPath}}
+          simulationClass: computerdatabase.ComputerDatabaseSimulation
       - name: Stop the app
         run: npm run stop
