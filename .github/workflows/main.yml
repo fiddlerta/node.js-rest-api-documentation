@@ -37,10 +37,9 @@ jobs:
           ls -a $GITHUB_ACTION_PATH\api-tests
           echo "pomPath=$GITHUB_ACTION_PATH\api-tests" >> $GITHUB_OUTPUT
         id: extract_path_to_pom
-      - name: Run gatling API tests
-        uses: liatrio/run-gatling@v1.2.0
-        with:
-          pomPath: ${{steps.extract_path_to_pom.outputs.pomPath}}
-          simulationClass: computerdatabase.ComputerDatabaseSimulation
+      - name: Run local k6 test
+        uses: grafana/k6-action@v0.2.0
+        with: 
+          filename: ${{steps.extract_path_to_pom.outputs.pomPath}}/single-request.js
       - name: Stop the app
         run: npm run stop
