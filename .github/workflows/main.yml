@@ -40,6 +40,6 @@ jobs:
       - name: Run local k6 test
         uses: grafana/k6-action@v0.2.0
         with: 
-          filename: ${{steps.extract_path_to_pom.outputs.pomPath}}/single-request.js
+          filename: ${{steps.extract_path_to_pom.outputs.pomPath}}\single-request.js
       - name: Stop the app
         run: npm run stop
