@@ -30,7 +30,7 @@ jobs:
       - name: Checkout remote branch with API tests
         uses: actions/checkout@v4
         with: 
-          repository: fiddlerta/gatling-maven-tests-java
+          repository: fiddlerta/k6-api-tests
           path: api-tests
       - name: Check 'api-tests' folder content
         run: |
@@ -40,6 +40,6 @@ jobs:
       - name: Run local k6 test
         uses: grafana/k6-action@v0.2.0
         with: 
-          filename: "api-tests/single-request.js"
+          filename: api-tests/single-request.js
       - name: Stop the app
         run: npm run stop
