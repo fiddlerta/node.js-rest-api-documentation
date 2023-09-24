@@ -35,11 +35,11 @@ jobs:
       - name: Check 'api-tests' folder content
         run: |
           ls -a $GITHUB_ACTION_PATH\api-tests
-          echo "pomPath=$GITHUB_ACTION_PATH\api-tests" >> $GITHUB_OUTPUT
+          echo "pomPath=$GITHUB_ACTION_PATH\api-tests\" >> $GITHUB_OUTPUT
         id: extract_path_to_pom
       - name: Run local k6 test
         uses: grafana/k6-action@v0.2.0
         with: 
-          filename: api-tests\\single-request.js
+          filename: ${{steps.extract_path_to_pom.outputs.extract_path_to_pom}}single-request.js
       - name: Stop the app
         run: npm run stop
