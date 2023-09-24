@@ -35,7 +35,7 @@ jobs:
       - name: Check 'api-tests' folder content
         run: |
           ls -a $GITHUB_ACTION_PATH\api-tests
-          echo "pomPath=$GITHUB_ACTION_PATH\api-tests\" >> $GITHUB_OUTPUT
+          echo "pomPath=$GITHUB_ACTION_PATH\api-tests" >> $GITHUB_OUTPUT
         id: extract_path_to_pom
       - name: Run local k6 test
         uses: grafana/k6-action@v0.2.0
