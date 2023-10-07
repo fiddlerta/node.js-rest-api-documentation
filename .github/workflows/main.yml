@@ -37,6 +37,8 @@ jobs:
           ls -a $GITHUB_ACTION_PATH\api-tests
           echo "pomPath=$GITHUB_ACTION_PATH\api-tests" >> $GITHUB_OUTPUT
         id: extract_path_to_pom
+      - name: Curl the localhost
+        run: curl http://127.0.0.1:4000/todos
       - name: Run local k6 test
         uses: grafana/k6-action@v0.2.0
         with: 
