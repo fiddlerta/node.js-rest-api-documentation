@@ -7,6 +7,7 @@ const cors = require("cors");
 const swaggerUI = require("swagger-ui-express");
 const docs = require('./docs');
 const todoRouter = require('./routes/todos');
+const fs = require('fs');
 
 const adapter = new FileSync(join(__dirname,'..','db.json'));
 const db = low(adapter);
@@ -23,8 +24,19 @@ app.use(cors());
 app.use('/todos',todoRouter);
 app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(docs));
 
+// function to restore db on start
+function restore_db(){
+    try {
+        const data = fs.readFileSync('restore_db.json', 'utf8');
+        fs.writeFileSync("db.json",data,{encoding:'utf8',flag:'w'})
+      } catch (err) {
+        console.error(err);
+      }
+}
+
 //initialize the app.
 async function initialize(){    
+    restore_db();
     app.listen(PORT);
 };
 
