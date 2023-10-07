@@ -15,7 +15,7 @@ db.defaults({ todos:[] }).write();
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// app configs.
+// app configs .
 app.db = db;
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
