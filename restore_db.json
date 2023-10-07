@@ -1,0 +1,9 @@
+{
+  "todos": [
+    {
+      "id": "todo-0",
+      "title": "The long lasting todo that is always here",
+      "completed": false
+    }
+  ]
+}
