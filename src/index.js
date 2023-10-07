@@ -24,7 +24,7 @@ app.use(cors());
 app.use('/todos',todoRouter);
 app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(docs));
 
-// function to restore db on start 
+// function to restore db on start  
 function restore_db(){
     try {
         const data = fs.readFileSync('restore_db.json', 'utf8');
@@ -34,7 +34,7 @@ function restore_db(){
       }
 }
 
-//initialize the app.
+//initialize the app .
 async function initialize(){    
     restore_db();
     app.listen(PORT);
@@ -44,3 +44,5 @@ initialize()
     .finally(
         () => console.log(`app started on port:${PORT}`)
     );
+
+module.exports = {restore_db}
