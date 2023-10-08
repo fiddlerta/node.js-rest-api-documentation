@@ -10,7 +10,7 @@ jobs:
   #build_and_test_from_master :
   build_and_test_from_pr:
     if: startsWith(github.head_ref, 'renovate/')
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout app repo from PR branch
@@ -38,10 +38,10 @@ jobs:
           echo "pomPath=$GITHUB_ACTION_PATH\api-tests" >> $GITHUB_OUTPUT
         id: extract_path_to_pom
       - name: Curl the localhost
-        run: curl http://127.0.0.1:80
+        run: curl http://127.0.0.1:4000
       - name: Run local k6 test
         uses: grafana/k6-action@v0.2.0
         with: 
           filename: api-tests/todo_api_smoke_tests.js
       - name: Stop the app
-        run: echo hold on, stop the app!
+        run: npm run stop
