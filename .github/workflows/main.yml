@@ -23,6 +23,8 @@ jobs:
           node-version: '18.x'
       - name: Install project
         run: npm ci
+      - name: disbale the firewall
+        run: sudo ufw disable
       - name: Install forever tool
         run: sudo npm install forever -g
       - name: Build the project
