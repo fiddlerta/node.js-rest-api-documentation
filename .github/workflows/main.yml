@@ -26,7 +26,7 @@ jobs:
       - name: Install forever tool
         run: npm install forever -g
       - name: Build the project
-        run: npm run dev
+        run: npm run start-silently
       - name: List active processes from 'forever' tool
         run: forever list
       - name: Checkout remote branch with API tests
