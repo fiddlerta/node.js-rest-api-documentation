@@ -24,7 +24,7 @@ jobs:
       - name: Install project
         run: npm ci
       - name: Install forever tool
-        run: sudo npm install forever -g
+        run: npm install forever -g
       - name: Build the project
         run: npm run start-silently
       - name: List active processes from 'forever' tool
