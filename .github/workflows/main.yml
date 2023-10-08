@@ -10,7 +10,7 @@ jobs:
   #build_and_test_from_master:
   build_and_test_from_pr:
     if: startsWith(github.head_ref, 'renovate/')
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout app repo from PR branch
@@ -23,8 +23,6 @@ jobs:
           node-version: '18.x'
       - name: Install project
         run: npm ci
-      - name: disbale the firewall
-        run: sudo ufw disable
       - name: Install forever tool
         run: sudo npm install forever -g
       - name: Build the project
