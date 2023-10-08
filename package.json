@@ -3,7 +3,6 @@
   "version": "1.0.1",
   "description": "documenting a rest api using swagger",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "dev": "nodemon ./src/index.js",
     "start": "node ./src/index.js",
