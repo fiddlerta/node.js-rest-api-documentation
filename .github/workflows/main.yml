@@ -25,10 +25,10 @@ jobs:
         run: npm ci
       - name: Install forever tool
         run: sudo npm install forever -g
-      - name: List active processes from 'forever' tool
-        run: forever list
       - name: Build the project
         run: npm run start-silently
+      - name: List active processes from 'forever' tool
+        run: forever list
       - name: Checkout remote branch with API tests
         uses: actions/checkout@v4
         with: 
