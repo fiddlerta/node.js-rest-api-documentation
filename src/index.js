@@ -44,5 +44,3 @@ initialize()
     .finally(
         () => console.log(`app started on port:${PORT}`)
     );
-
-module.exports = {restore_db}
