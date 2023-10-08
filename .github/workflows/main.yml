@@ -10,7 +10,7 @@ jobs:
   #build_and_test_from_master:
   build_and_test_from_pr:
     if: startsWith(github.head_ref, 'renovate/')
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout app repo from PR branch
@@ -24,7 +24,9 @@ jobs:
       - name: Install project
         run: npm ci
       - name: Install forever tool
-        run: npm install forever -g
+        run: sudo npm install forever -g
+      - name: List active processes from 'forever' tool
+        run: forever list
       - name: Build the project
         run: npm run start-silently
       - name: Checkout remote branch with API tests
