@@ -28,3 +28,9 @@ npm run stop
 
 - APIs available by URL: 
 http://localhost:4000/api-docs
+
+- File power-shell cannot be loaded because running scripts is disabled on this system: 
+https://stackoverflow.com/questions/4037939/powershell-says-execution-of-scripts-is-disabled-on-this-system
+
+- Install docker on Ubuntu: 
+https://docs.docker.com/engine/install/ubuntu/
