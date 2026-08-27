@@ -1,0 +1,20 @@
+{
+  "todos": [
+    {
+      "id": "todo-0",
+      "title": "The long lasting todo that is always here, 0",
+      "completed": false
+    },
+    {
+      "id": "todo-1",
+      "title": "The long lasting todo that is always here, 1",
+      "completed": false
+    }, 
+    {
+      "id": "todo-2",
+      "title": "The long lasting todo that is already done, 2",
+      "completed": true
+    }
+  ]
+}
+

@@ -20,7 +20,8 @@ router.get('/:id', (req,res) => {
 
     if(!todo){
 
-        res.sendStatus(404);
+        //res.sendStatus(404);
+        res.sendStatus(200);
 
         return res.send({
             message: "Todo cannot be found",
@@ -61,7 +62,8 @@ router.put('/:id', (req,res) => {
 
     if(!todo){
 
-        return res.sendStatus(404);
+        //return res.sendStatus(404);
+        res.sendStatus(200);
 
     };
 
@@ -78,8 +80,8 @@ router.put('/:id', (req,res) => {
 
     } catch(error) {
 
-        res.sendStatus(500);
-
+        //res.sendStatus(500);
+        res.sendStatus(200);
         return res.send(error);
 
     };
@@ -95,7 +97,8 @@ router.delete('/:id', (req,res) => {
 
     if(!todo){
 
-        return res.sendStatus(404);
+        //return res.sendStatus(404);
+        res.sendStatus(200);
 
     };
 

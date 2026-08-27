@@ -13,19 +13,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout app repo from PR branch
         uses: actions/checkout@v4
+      - name: Print name of pulled branch
+        run: echo running on branch ${GITHUB_HEAD_REF}
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '18.18.0'
       - name: Install project
         run: npm ci
       - name: Install forever tool
         run: npm install forever -g
       - name: Build the project
         run: npm run start-silently
-      - name: Run tests
-        run: echo "tests passed"
+      - name: List active processes from 'forever' tool
+        run: forever list
+      - name: Checkout remote branch with API tests
+        uses: actions/checkout@v4
+        with: 
+          repository: fiddlerta/k6-api-tests
+          path: api-tests
+      - name: Check 'api-tests' folder content
+        run: |
+          ls -a $GITHUB_ACTION_PATH\api-tests
+          echo "pomPath=$GITHUB_ACTION_PATH\api-tests" >> $GITHUB_OUTPUT
+        id: extract_path_to_pom
+      - name: Run local k6 test
+        uses: grafana/k6-action@v0.2.0
+        with: 
+          filename: api-tests/todo_api_smoke_tests.js
       - name: Stop the app
         run: npm run stop
